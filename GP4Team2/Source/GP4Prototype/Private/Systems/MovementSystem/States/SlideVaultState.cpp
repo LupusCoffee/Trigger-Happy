@@ -78,6 +78,13 @@ bool USlideVaultState::Enter(FMovementContext Context)
 	return true;
 }
 
+void USlideVaultState::Tick(float DeltaTime, FMovementContext Context)
+{
+	Super::Tick(DeltaTime, Context);
+
+	if (TryWalkTransition(Context)) return;
+}
+
 bool USlideVaultState::Exit()
 {
 	StopSlide();
@@ -96,13 +103,6 @@ bool USlideVaultState::Exit()
 	CustomCharMoveComp->OnSlideVaultExecuted();
 	
 	return true;
-}
-
-void USlideVaultState::Tick(float DeltaTime, FMovementContext Context)
-{
-	Super::Tick(DeltaTime, Context);
-
-	if (TryWalkTransition(Context)) return;
 }
 
 bool USlideVaultState::StartSlide(FVector SlideStartLocation)
