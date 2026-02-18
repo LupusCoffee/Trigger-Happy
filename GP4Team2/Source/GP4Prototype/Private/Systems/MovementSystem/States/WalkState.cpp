@@ -34,7 +34,7 @@ bool UWalkState::Enter(FMovementContext Context)
 	
 	if (OwnerCharacterMovementComponent) OwnerCharacterMovementComponent->MaxWalkSpeed = MoveSpeed;
 
-	CustomCharMoveComp->OnWalkStateEnter;
+	CustomCharMoveComp->OnWalkStateEnter.Broadcast();
 	
 	return true;
 }
